@@ -7,20 +7,17 @@ class Chatbot {
         this.minimizeBtn = document.getElementById('minimizeBtn');
         this.closeBtn = document.getElementById('closeBtn');
         
-        this.botResponses = [
-            "That's an interesting question! Let me think about that for a moment.",
-            "I understand what you're asking. Here's what I can tell you about that.",
-            "Great question! Based on my knowledge, I can help you with that.",
-            "I'm here to help! Let me provide you with some information on that topic.",
-            "Thanks for asking! Here's what I know about that subject.",
-            "I appreciate your question. Let me give you a detailed response.",
-            "That's a good point! Let me share some insights with you.",
-            "I'm glad you asked that. Here's what I can tell you.",
-            "Interesting perspective! Let me add some thoughts to that.",
-            "I'd be happy to help you with that. Here's my response."
-        ];
+        // Generate a unique session ID for this conversation
+        this.sessionId = this.generateSessionId();
+        
+        // API configuration
+        this.apiBaseUrl = 'http://localhost:3000/api';
         
         this.init();
+    }
+    
+    generateSessionId() {
+        return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
     }
     
     init() {
@@ -53,7 +50,7 @@ class Chatbot {
         this.messageInput.focus();
     }
     
-    sendMessage() {
+    async sendMessage() {
         const message = this.messageInput.value.trim();
         if (!message) return;
         
@@ -67,11 +64,36 @@ class Chatbot {
         // Show typing indicator
         this.showTypingIndicator();
         
-        // Simulate bot thinking time
-        setTimeout(() => {
+        try {
+            // Send message to backend API
+            const response = await fetch(`${this.apiBaseUrl}/chat`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: message,
+                    sessionId: this.sessionId
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            // Hide typing indicator
             this.hideTypingIndicator();
-            this.generateBotResponse(message);
-        }, 1500 + Math.random() * 1000);
+            
+            // Add AI response
+            this.addMessage(data.response, 'bot');
+            
+        } catch (error) {
+            console.error('Error sending message:', error);
+            this.hideTypingIndicator();
+            this.addMessage('Sorry, I encountered an error. Please try again.', 'bot');
+        }
     }
     
     addMessage(text, sender) {
@@ -105,37 +127,43 @@ class Chatbot {
         this.scrollToBottom();
     }
     
-    generateBotResponse(userMessage) {
-        // Simple keyword-based responses
-        let response = this.getRandomResponse();
-        
-        const lowerMessage = userMessage.toLowerCase();
-        
-        if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-            response = "Hello! It's great to meet you. How can I assist you today?";
-        } else if (lowerMessage.includes('how are you')) {
-            response = "I'm doing well, thank you for asking! I'm here and ready to help you with any questions you might have.";
-        } else if (lowerMessage.includes('name')) {
-            response = "I'm an AI assistant, designed to help answer your questions and provide information. What would you like to know?";
-        } else if (lowerMessage.includes('help') || lowerMessage.includes('support')) {
-            response = "I'm here to help! I can answer questions, provide information, and assist with various topics. What do you need help with?";
-        } else if (lowerMessage.includes('thank')) {
-            response = "You're very welcome! I'm happy to help. Is there anything else you'd like to know?";
-        } else if (lowerMessage.includes('bye') || lowerMessage.includes('goodbye')) {
-            response = "Goodbye! It was nice chatting with you. Feel free to come back anytime if you have more questions!";
-        } else if (lowerMessage.includes('weather')) {
-            response = "I don't have access to real-time weather data, but I can help you find weather information or answer other questions!";
-        } else if (lowerMessage.includes('time')) {
-            response = `The current time is ${this.getCurrentTime()}. Is there anything specific you'd like to know about time management?`;
-        } else if (lowerMessage.includes('joke') || lowerMessage.includes('funny')) {
-            response = "I'm more focused on being helpful than funny, but I do my best to keep our conversations engaging! What else can I help you with?";
+    // Method to load conversation history (optional feature)
+    async loadConversationHistory() {
+        try {
+            const response = await fetch(`${this.apiBaseUrl}/conversation/${this.sessionId}`);
+            if (response.ok) {
+                const data = await response.json();
+                if (data.conversation && data.conversation.length > 0) {
+                    // Clear current messages
+                    this.chatMessages.innerHTML = '';
+                    
+                    // Load conversation history
+                    data.conversation.forEach(msg => {
+                        this.addMessage(msg.content, msg.role === 'user' ? 'user' : 'bot');
+                    });
+                }
+            }
+        } catch (error) {
+            console.error('Error loading conversation history:', error);
         }
-        
-        this.addMessage(response, 'bot');
     }
     
-    getRandomResponse() {
-        return this.botResponses[Math.floor(Math.random() * this.botResponses.length)];
+    // Method to clear conversation
+    async clearConversation() {
+        try {
+            await fetch(`${this.apiBaseUrl}/conversation/${this.sessionId}`, {
+                method: 'DELETE'
+            });
+            
+            // Clear the chat display
+            this.chatMessages.innerHTML = '';
+            
+            // Add welcome message
+            this.addMessage("Hello! I'm your AI assistant. How can I help you today?", 'bot');
+            
+        } catch (error) {
+            console.error('Error clearing conversation:', error);
+        }
     }
     
     showTypingIndicator() {
