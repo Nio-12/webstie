@@ -1,15 +1,357 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chatbot</title>
+    <title>Fashion Store - Thời trang đẳng cấp</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="chatbot-container">
-        <div class="chatbot-header">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>FASHION</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#products" class="nav-link">Sản phẩm</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">Về chúng tôi</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Liên hệ</a>
+                </li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#" class="nav-icon" id="searchIcon"><i class="fas fa-search"></i></a>
+                <a href="#" class="nav-icon cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </a>
+                <a href="#" class="nav-icon"><i class="fas fa-user"></i></a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Phong cách mới<br>Cuộc sống mới</h1>
+            <p class="hero-subtitle">Khám phá bộ sưu tập thời trang mới nhất với thiết kế độc đáo và chất lượng cao cấp</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">Mua sắm ngay</a>
+                <a href="#about" class="btn btn-secondary">Tìm hiểu thêm</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-placeholder">
+                <i class="fas fa-tshirt"></i>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Danh mục sản phẩm</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-male"></i>
+                    </div>
+                    <h3>Nam</h3>
+                    <p>Thời trang nam hiện đại</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3>Nữ</h3>
+                    <p>Thời trang nữ thanh lịch</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Trẻ em</h3>
+                    <p>Thời trang trẻ em dễ thương</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <h3>Giày dép</h3>
+                    <p>Giày dép thời trang</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Sản phẩm nổi bật</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-placeholder">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="btn-quick-view">Xem nhanh</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Áo thun basic</h3>
+                        <p class="product-price">299.000đ</p>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">Thêm vào giỏ</button>
+                            <button class="btn-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-placeholder">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="btn-quick-view">Xem nhanh</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Quần jean slim</h3>
+                        <p class="product-price">599.000đ</p>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">Thêm vào giỏ</button>
+                            <button class="btn-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-placeholder">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="btn-quick-view">Xem nhanh</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Áo khoác denim</h3>
+                        <p class="product-price">899.000đ</p>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">Thêm vào giỏ</button>
+                            <button class="btn-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-placeholder">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="btn-quick-view">Xem nhanh</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Váy đầm dự tiệc</h3>
+                        <p class="product-price">1.299.000đ</p>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">Thêm vào giỏ</button>
+                            <button class="btn-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-placeholder">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="btn-quick-view">Xem nhanh</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Áo sơ mi công sở</h3>
+                        <p class="product-price">499.000đ</p>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">Thêm vào giỏ</button>
+                            <button class="btn-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-placeholder">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="btn-quick-view">Xem nhanh</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Quần short nam</h3>
+                        <p class="product-price">399.000đ</p>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">Thêm vào giỏ</button>
+                            <button class="btn-wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="products-more">
+                <a href="#" class="btn btn-outline">Xem tất cả sản phẩm</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Về chúng tôi</h2>
+                    <p>Chúng tôi là thương hiệu thời trang với hơn 10 năm kinh nghiệm trong lĩnh vực may mặc. Với đội ngũ thiết kế tài năng và công nghệ sản xuất hiện đại, chúng tôi cam kết mang đến những sản phẩm chất lượng cao với thiết kế độc đáo.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Giao hàng miễn phí</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-undo"></i>
+                            <span>Đổi trả 30 ngày</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Bảo hành chất lượng</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="about-placeholder">
+                        <i class="fas fa-store"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Liên hệ với chúng tôi</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Địa chỉ</h3>
+                            <p>123 Đường ABC, Quận 1, TP.HCM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Điện thoại</h3>
+                            <p>+84 123 456 789</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@fashionstore.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Họ và tên" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Tiêu đề">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Nội dung tin nhắn" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FASHION</h3>
+                    <p>Thời trang đẳng cấp cho mọi người</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Danh mục</h4>
+                    <ul>
+                        <li><a href="#">Nam</a></li>
+                        <li><a href="#">Nữ</a></li>
+                        <li><a href="#">Trẻ em</a></li>
+                        <li><a href="#">Giày dép</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Hỗ trợ</h4>
+                    <ul>
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Bảo hành</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Thông tin</h4>
+                    <ul>
+                        <li><a href="#">Về chúng tôi</a></li>
+                        <li><a href="#">Tin tức</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                        <li><a href="#">Điều khoản</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Fashion Store. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header" id="chatbotHeader">
             <div class="bot-info">
                 <div class="bot-avatar">
                     <i class="fas fa-robot"></i>
@@ -23,9 +365,6 @@
                 <button class="minimize-btn" id="minimizeBtn">
                     <i class="fas fa-minus"></i>
                 </button>
-                <button class="close-btn" id="closeBtn">
-                    <i class="fas fa-times"></i>
-                </button>
             </div>
         </div>
         
@@ -35,15 +374,15 @@
                     <i class="fas fa-robot"></i>
                 </div>
                 <div class="message-content">
-                    <p>Hello! I'm your AI assistant. How can I help you today?</p>
-                    <span class="message-time">Just now</span>
+                    <p>Xin chào! Tôi là trợ lý AI của Fashion Store. Tôi có thể giúp bạn tìm kiếm sản phẩm, tư vấn về thời trang hoặc hỗ trợ mua sắm. Bạn cần gì ạ?</p>
+                    <span class="message-time">Vừa xong</span>
                 </div>
             </div>
         </div>
         
         <div class="chat-input-container">
             <div class="input-wrapper">
-                <input type="text" id="messageInput" placeholder="Type your message here..." maxlength="500">
+                <input type="text" id="messageInput" placeholder="Nhập tin nhắn của bạn..." maxlength="500">
                 <button class="send-btn" id="sendBtn">
                     <i class="fas fa-paper-plane"></i>
                 </button>
@@ -54,9 +393,47 @@
                     <span></span>
                     <span></span>
                 </div>
-                <span>AI is typing...</span>
+                <span>AI đang nhập...</span>
             </div>
         </div>
+    </div>
+
+    <!-- Shopping Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-overlay" id="cartOverlay"></div>
+        <div class="cart-container">
+            <div class="cart-header">
+                <h3><i class="fas fa-shopping-cart"></i> Giỏ hàng</h3>
+                <button class="cart-close" id="cartClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-content">
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be dynamically added here -->
+                </div>
+                <div class="cart-empty" id="cartEmpty">
+                    <i class="fas fa-shopping-bag"></i>
+                    <p>Giỏ hàng trống</p>
+                    <span>Hãy thêm sản phẩm vào giỏ hàng để bắt đầu mua sắm</span>
+                </div>
+            </div>
+            <div class="cart-footer" id="cartFooter">
+                <div class="cart-total">
+                    <span>Tổng cộng:</span>
+                    <span class="total-amount" id="totalAmount">0đ</span>
+                </div>
+                <div class="cart-actions">
+                    <button class="btn btn-secondary" id="clearCart">Xóa giỏ hàng</button>
+                    <button class="btn btn-primary" id="checkoutBtn">Thanh toán</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <div class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comments"></i>
     </div>
 
     <script src="script.js"></script>
